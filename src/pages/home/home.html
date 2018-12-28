@@ -1,0 +1,32 @@
+<ion-header no-border>
+  <ion-navbar color="secondary">
+    <ion-title>
+      Tarefas
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="criar()"><ion-icon name="ios-add-circle"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="home">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-list no-lines>
+    <ion-item-sliding *ngFor="let tarefa of tarefas">
+      <ion-item>
+        {{tarefa.title}}
+      </ion-item>
+      <ion-item-options>
+        <button ion-button icon-only color="light" (click)="atualizar(tarefa)">
+          <ion-icon name="create"></ion-icon>
+        </button>
+        <button ion-button icon-only color="danger" (click)="apagar(tarefa)">
+          <ion-icon name="ios-close"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+</ion-content>
